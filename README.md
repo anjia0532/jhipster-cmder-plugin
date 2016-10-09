@@ -1,10 +1,12 @@
 # JHipster powershell,[cmder](http://cmder.net/) plugin
 
 download [user-profile.ps1](https://github.com/anjia0532/jhipster-cmder-plugin/blob/master/user-profile.ps1) 
+
 save as 
+
 %CMDER_ROOT%\config\user-profile.ps1
 
-pen cmder
+open cmder
 
 ctrl+t
 
