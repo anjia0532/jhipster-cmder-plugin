@@ -1,7 +1,6 @@
 # Use this }le to run your own startup commands
 
-function e1{explorer.exe $*}
-Set-Alias e e1
+Set-Alias e "C:\Windows\explorer.exe"
 
 function jh1{
  cls 
