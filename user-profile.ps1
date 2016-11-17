@@ -1,6 +1,15 @@
 # Use this }le to run your own startup commands
 Set-Alias e "C:\Windows\explorer.exe"
 
+function jhdiff1{
+    if (Test-Path mvnw){
+        ./mvnw compile liquibase:diff
+    }else{
+        ./gradlew liquibaseDiffChangelog
+    }
+}
+Set-Alias jhdiff jhdiff1
+
 function jh1{yo jhipster}
 Set-Alias jh jh1
 
