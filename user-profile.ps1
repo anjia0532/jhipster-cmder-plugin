@@ -1,52 +1,74 @@
 # Use this }le to run your own startup commands
+
 Set-Alias e "C:\Windows\explorer.exe"
 
-function jhdiff1{
-    if (Test-Path mvnw){
-        ./mvnw compile liquibase:diff
-    }else{
-        ./gradlew liquibaseDiffChangelog
-    }
-}
-Set-Alias jhdiff jhdiff1
+function port1{
+ netstat -aon|findstr `"$args`"}
+Set-Alias port port1
 
-function jh1{yo jhipster}
+function jh1{
+ cls 
+yo jhipster}
 Set-Alias jh jh1
 
-function jhinstall1{npm install ; bower install ; gulp install}
+function jhinstall1{
+ cls 
+npm install ; bower install ; gulp install}
 Set-Alias jhinstall jhinstall1
 
-function jhskip1{yo jhipster --skip-install}
+function jhskip1{
+ cls 
+yo jhipster --skip-install}
 Set-Alias jhskip jhskip1
 
-function jhf1{yo jhipster --force}
+function jhf1{
+ cls 
+yo jhipster --force}
 Set-Alias jhf jhf1
 
-function jhfe1{yo jhipster --force --with-entities}
+function jhfe1{
+ cls 
+yo jhipster --force --with-entities}
 Set-Alias jhfe jhfe1
 
-function jhjdl1{yo jhipster:import-jdl}
+function jhjdl1{
+ cls 
+yo jhipster:import-jdl $args}
 Set-Alias jhjdl jhjdl1
 
-function jhe1{yo jhipster:entity}
+function jhe1{
+ cls 
+yo jhipster:entity $args}
 Set-Alias jhe jhe1
 
-function jhs1{yo jhipster:service}
+function jhs1{
+ cls 
+yo jhipster:service $args}
 Set-Alias jhs jhs1
 
-function jhlang1{yo jhipster:languages}
+function jhlang1{
+ cls 
+yo jhipster:languages $args}
 Set-Alias jhlang jhlang1
 
-function jhinfo1{yo jhipster:info}
+function jhinfo1{
+ cls 
+yo jhipster:info}
 Set-Alias jhinfo jhinfo1
 
-function jhcompose1{yo jhipster:docker-compose}
+function jhcompose1{
+ cls 
+yo jhipster:docker-compose}
 Set-Alias jhcompose jhcompose1
 
-function jhlang1{yo jhipster:languages}
+function jhlang1{
+ cls 
+yo jhipster:languages}
 Set-Alias jhlang jhlang1
 
 function jhclean1{
+ cls 
+
 	if (Test-Path mvnw){
 		./mvnw clean
 	}else{
@@ -55,7 +77,9 @@ function jhclean1{
 }
 Set-Alias jhclean jhclean1
 
-function jhrun1() {    if (Test-Path mvnw){
+function jhrun1() {
+ cls 
+    if (Test-Path mvnw){
         ./mvnw spring-boot:run
     }else{
         ./gradlew bootRun
@@ -63,7 +87,19 @@ function jhrun1() {    if (Test-Path mvnw){
 }
 Set-Alias jhrun jhrun1
 
-function jhpack1() {    if (Test-Path mvnw){
+function jhprod1() {
+ cls 
+    if (Test-Path mvnw){
+        jhclean;./mvnw `-P'prod,swagger';
+    }else{
+        jhclean;./gradlew -Pprod -Pswagger
+    }
+}
+Set-Alias jhprod jhprod1
+
+function jhpack1() {
+ cls 
+    if (Test-Path mvnw){
         ./mvnw -Pprod package
     }else{
         ./gradlew -Pprod bootRepackage
@@ -71,7 +107,9 @@ function jhpack1() {    if (Test-Path mvnw){
 }
 Set-Alias jhpack jhpack1
 
-function jhdock1() {    if (Test-Path mvnw){
+function jhdock1() {
+ cls 
+    if (Test-Path mvnw){
         ./mvnw -Pprod package docker:build
     }else{
         ./gradlew -Pprod bootRepackage buildDocker
@@ -80,7 +118,9 @@ function jhdock1() {    if (Test-Path mvnw){
 Set-Alias jhdock jhdock1
 
 
-function jhgatling1() {    if (Test-Path mvnw){
+function jhgatling1() {
+ cls 
+    if (Test-Path mvnw){
         ./mvnw gatling:execute
     }else{
         ./gradlew gatlingRun
