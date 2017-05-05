@@ -2,6 +2,16 @@
 
 Set-Alias e "C:\Windows\explorer.exe"
 
+
+function jhdiff1{
+    if (Test-Path mvnw){
+        ./mvnw compile liquibase:diff
+    }else{
+        ./gradlew liquibaseDiffChangelog
+    }
+}
+Set-Alias jhdiff jhdiff1
+
 function port1{
  netstat -aon|findstr `"$args`"}
 Set-Alias port port1
@@ -11,15 +21,25 @@ function jh1{
 yo jhipster}
 Set-Alias jh jh1
 
-function jhinstall1{
+function jhyarn1{
  cls 
-npm install ; bower install ; gulp install}
-Set-Alias jhinstall jhinstall1
+yo jhipster --yarn}
+Set-Alias jhyarn jhyarn1
 
 function jhskip1{
  cls 
 yo jhipster --skip-install}
 Set-Alias jhskip jhskip1
+
+function jhinstall1{
+ cls 
+npm install ; bower install ; gulp install}
+Set-Alias jhinstall jhinstall1
+
+function jhupgrade1{
+ cls 
+yo jhipster:upgrade}
+Set-Alias jhupgrade jhupgrade1
 
 function jhf1{
  cls 
@@ -30,6 +50,9 @@ function jhfe1{
  cls 
 yo jhipster --force --with-entities}
 Set-Alias jhfe jhfe1
+
+
+
 
 function jhjdl1{
  cls 
@@ -61,16 +84,46 @@ function jhcompose1{
 yo jhipster:docker-compose}
 Set-Alias jhcompose jhcompose1
 
-function jhlang1{
+function jhrancher1{
  cls 
-yo jhipster:languages}
-Set-Alias jhlang jhlang1
+yo jhipster:rancher-compose}
+Set-Alias jhrancher jhrancher1
+
+function jhcicd1{
+ cls 
+yo jhipster:ci-cd}
+Set-Alias jhcicd jhcicd1
+
+
+
+function jhcf1{
+ cls 
+yo jhipster:cloudfoundry}
+Set-Alias jhcf jhcf1
+
+function jhheroku1{
+ cls 
+yo jhipster:heroku}
+Set-Alias jhheroku jhheroku1
+
+function jhk8s1{
+ cls 
+yo jhipster:kubernetes}
+Set-Alias jhk8s jhk8s1
+
+function jhaws1{
+ cls 
+yo jhipster:aws}
+Set-Alias jhaws jhaws1
+
+
+
 
 function jhclean1{
  cls 
 
 	if (Test-Path mvnw){
-		./mvnw clean
+		 ./mvnw clean;mvn compile
 	}else{
 		./gradlew clean
 	}
@@ -129,6 +182,18 @@ function jhgatling1() {
 Set-Alias jhgatling jhgatling1
 
 
+function jhappup1 {docker-compose -f src/main/docker/app.yml up -d}
+Set-Alias jhappup jhappup1
+
+function jhappdown1 {docker-compose -f src/main/docker/app.yml down}
+Set-Alias jhappdown jhappdown1
+
+function jhappstop1 {docker-compose -f src/main/docker/app.yml stop}
+Set-Alias jhappstop jhappstop1
+
+function jhapplogs1 {docker-compose -f src/main/docker/app.yml logs --follow}
+Set-Alias jhapplogs jhapplogs1
+
 function jhmysqlup1 {docker-compose -f src/main/docker/mysql.yml up -d}
 Set-Alias jhmysqlup jhmysqlup1
 
@@ -137,6 +202,9 @@ Set-Alias jhmysqldown jhmysqldown1
 
 function jhmysqlstop1 {docker-compose -f src/main/docker/mysql.yml stop}
 Set-Alias jhmysqlstop jhmysqlstop1
+
+function jhmysqllogs1 {docker-compose -f src/main/docker/mysql.yml logs --follow}
+Set-Alias jhmysqllogs jhmysqllogs1
 
 function jhmariaup1 {docker-compose -f src/main/docker/mariadb.yml up -d}
 Set-Alias jhmariaup jhmariaup1
@@ -147,6 +215,9 @@ Set-Alias jhmariadown jhmariadown1
 function jhmariastop1 {docker-compose -f src/main/docker/mariadb.yml stop}
 Set-Alias jhmariastop jhmariastop1
 
+function jhmarialogs1 {docker-compose -f src/main/docker/mariadb.yml logs --follow}
+Set-Alias jhmarialogs jhmarialogs1
+
 function jhpostgresqlup1 {docker-compose -f src/main/docker/postgresql.yml up -d}
 Set-Alias jhpostgresqlup jhpostgresqlup1
 
@@ -155,6 +226,9 @@ Set-Alias jhpostgresqldown jhpostgresqldown1
 
 function jhpostgresqlstop1 {docker-compose -f src/main/docker/postgresql.yml stop}
 Set-Alias jhpostgresqlstop jhpostgresqlstop1
+
+function jhpostgresqllogs1 {docker-compose -f src/main/docker/postgresql.yml logs --follow}
+Set-Alias jhpostgresqllogs jhpostgresqllogs1
 
 function jhmongoup1 {docker-compose -f src/main/docker/mongodb.yml up -d}
 Set-Alias jhmongoup jhmongoup1
@@ -165,6 +239,9 @@ Set-Alias jhmongodown jhmongodown1
 function jhmongostop1 {docker-compose -f src/main/docker/mongodb.yml stop}
 Set-Alias jhmongostop jhmongostop1
 
+function jhmongologs1 {docker-compose -f src/main/docker/mongodb.yml logs --follow}
+Set-Alias jhmongologs jhmongologs1
+
 function jhcassandraup1 {docker-compose -f src/main/docker/cassandra.yml up -d}
 Set-Alias jhcassandraup jhcassandraup1
 
@@ -173,6 +250,9 @@ Set-Alias jhcassandradown jhcassandradown1
 
 function jhcassandrastop1 {docker-compose -f src/main/docker/cassandra.yml stop}
 Set-Alias jhcassandrastop jhcassandrastop1
+
+function jhcassandralogs1 {docker-compose -f src/main/docker/cassandra.yml logs --follow}
+Set-Alias jhcassandralogs jhcassandralogs1
 
 function jhesup1 {docker-compose -f src/main/docker/elasticsearch.yml up -d}
 Set-Alias jhesup jhesup1
@@ -183,6 +263,9 @@ Set-Alias jhesdown jhesdown1
 function jhesstop1 {docker-compose -f src/main/docker/elasticsearch.yml stop}
 Set-Alias jhesstop jhesstop1
 
+function jheslogs1 {docker-compose -f src/main/docker/elasticsearch.yml logs --follow}
+Set-Alias jheslogs jheslogs1
+
 function jhregistryup1 {docker-compose -f src/main/docker/jhipster-registry.yml up -d}
 Set-Alias jhregistryup jhregistryup1
 
@@ -191,6 +274,9 @@ Set-Alias jhregistrydown jhregistrydown1
 
 function jhregistrystop1 {docker-compose -f src/main/docker/jhipster-registry.yml stop}
 Set-Alias jhregistrystop jhregistrystop1
+
+function jhregistrylogs1 {docker-compose -f src/main/docker/jhipster-registry.yml logs --follow}
+Set-Alias jhregistrylogs jhregistrylogs1
 
 function jhkafkaup1 {docker-compose -f src/main/docker/kafka.yml up -d}
 Set-Alias jhkafkaup jhkafkaup1
@@ -201,6 +287,9 @@ Set-Alias jhkafkadown jhkafkadown1
 function jhkafkastop1 {docker-compose -f src/main/docker/kafka.yml stop}
 Set-Alias jhkafkastop jhkafkastop1
 
+function jhkafkalogs1 {docker-compose -f src/main/docker/kafka.yml logs --follow}
+Set-Alias jhkafkalogs jhkafkalogs1
+
 function jhconsulup1 {docker-compose -f src/main/docker/consul.yml up -d}
 Set-Alias jhconsulup jhconsulup1
 
@@ -209,3 +298,6 @@ Set-Alias jhconsuldown jhconsuldown1
 
 function jhconsulstop1 {docker-compose -f src/main/docker/consul.yml stop}
 Set-Alias jhconsulstop jhconsulstop1
+
+function jhconsullogs1 {docker-compose -f src/main/docker/consul.yml logs --follow}
+Set-Alias jhconsullogs jhconsullogs1
