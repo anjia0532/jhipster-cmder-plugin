@@ -37,4 +37,4 @@ Application files will be generated in folder: D:\AnJia\Work\workspace\jhipster\
   [BETA] JHipster UAA server (for microservice OAuth2 authentication)
 ```
 
-#enjoy it
+# enjoy it
