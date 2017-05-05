@@ -4,13 +4,13 @@ download [user-profile.ps1](https://github.com/anjia0532/jhipster-cmder-plugin/b
 
 save as 
 
-%CMDER_ROOT%\config\user-profile.ps1
+`%CMDER_ROOT%\config\user-profile.ps1`
 
 open cmder
 
-ctrl+t
+<kbd>ctrl</kbd>+<kbd>T</kbd>
 
-choose powershell
+choose `powershell`
 
 ```
 mkdir demo;cd demo
