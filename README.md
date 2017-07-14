@@ -41,57 +41,86 @@ Application files will be generated in folder: D:\AnJia\Work\workspace\jhipster\
 
 # alias list
 
-`jh`=`jhipster`
+`jhdiff `
+    maven
+        `./mvnw compile liquibase:diff`
+    gradlew
+        `./gradlew liquibaseDiffChangelog`
 
-`jhlink`=`yarn link generator-jhipster`
+`jh`=`yo jhipster`
 
-`jhyarn`=`jhipster --yarn`
+`jhyarn`=`yo jhipster --yarn`
 
-`jhnpm`=`jhipster --npm`
+`jhskip`=`yo jhipster --skip-install`
 
-`jhskip`=`jhipster --skip-install --skip-checks`
+`jhinstall`=`npm install ; bower install ; gulp install`
 
-`jhf`=`jhipster --force`
+`jhupgrade`=`yo jhipster:upgrade`
 
-`jhfe`=`jhipster --force --with-entities`
+`jhf`=`yo jhipster --force`
 
-`jhupgrade`=`jhipster upgrade`
+`jhfe`=`yo jhipster --force --with-entities`
 
-`jhjdl`=`jhipster import-jdl`
+`jhjdl`=`yo jhipster:import-jdl $args`
 
-`jhe`=`jhipster entity`
+`jhe`=`yo jhipster:entity $args`
 
-`jhs`=`jhipster service`
+`jhs`=`yo jhipster:service $args`
 
-`jhlang`=`jhipster languages`
+`jhlang`=`yo jhipster:languages $args`
 
-`jhinfo`=`jhipster info`
+`jhinfo`=`yo jhipster:info`
 
-`jhcompose`=`jhipster docker-compose`
+`jhcompose`=`yo jhipster:docker-compose`
 
-`jhrancher`=`jhipster rancher-compose`
+`jhrancher`=`yo jhipster:rancher-compose`
 
-`jhcicd`=`jhipster ci-cd`
+`jhcicd`=`yo jhipster:ci-cd`
 
-`jhcf`=`jhipster cloudfoundry`
+`jhcf`=`yo jhipster:cloudfoundry`
 
-`jhheroku`=`jhipster heroku`
+`jhheroku`=`yo jhipster:heroku`
 
-`jhkubernetes`=`jhipster kubernetes`
+`jhk8s`=`yo jhipster:kubernetes`
 
-`jhaws`=`jhipster aws`
+`jhaws`=`yo jhipster:aws`
 
-`jhopenshift`=`jhipster openshift`
+`jhclean`
+	maven
+		 `./mvnw clean;mvn compile`
+	gradlew
+		`./gradlew clean`
+	
 
-`jhinstall` = `yarn install && bower install && gulp install` or `yarn install`
+`jhrun`
+    maven
+        `./mvnw spring-boot:run`
+    gradlew
+        `./gradlew bootRun`
 
-`jhclean`=`./mvnw clean` or `./gradlew clean --no-daemon`
+`jhprod`
+    maven
+        `./mvnw `-P'prod,swagger';`
+    gradlew
+        `./gradlew -Pprod -Pswagger`
 
-`jhrun`=`./mvnw spring-boot:run` `./gradlew bootRun --no-daemon`
+`jhpack`
+    maven
+        `./mvnw -Pprod package`
+    gradlew
+        `./gradlew -Pprod bootRepackage`
 
-`jhpack`=`./mvnw -Pprod package` `./gradlew -Pprod bootRepackage --no-daemon`
+`jhdock`
+    maven
+        `./mvnw -Pprod package docker:build`
+    gradlew
+        `./gradlew -Pprod bootRepackage buildDocker`
 
-`jhdock`=`./mvnw -Pprod package docker:build` `./gradlew -Pprod bootRepackage buildDocker --no-daemon` 
+`jhgatling`
+    maven
+        `./mvnw gatling:execute`
+    gradlew
+        `./gradlew gatlingRun`
 
 `jhappup`=`docker-compose -f src/main/docker/app.yml up -d`
 
